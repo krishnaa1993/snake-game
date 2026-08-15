@@ -2,6 +2,10 @@
 
 A responsive browser-based Snake Game built using HTML, CSS, and JavaScript.
 
+## Live Demo
+
+[Play Snake Game](https://krishnaa1993.github.io/snake-game/)
+
 ## Features
 
 - Score and high-score tracking
