@@ -1,0 +1,207 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    
+}
+
+:root{
+     --bg-primary-color: #0c0c0c;
+    --bg-fill-color: #fdfdfc;
+    --bg-food-color: #ff3b3b;
+    --bg-snake-head-color: #00fd69;
+    --bg-snake-body-color: #27ae60;
+
+    --text-primary-color:#f0f0f0;
+
+    --space-xss:4px;
+    --space-sm:8px;
+    --space-md:16px;
+    --space-lg:24px;
+    --space-xl:32px;
+    --space-2xl:40px;
+    --space-3xl:48px;
+
+    --border-primary-color: #333333;
+
+    --border-radius-xs:4px;
+    --border-radius-sm:8px;
+    --border-radius-md:12px;
+    --border-radius-lg:16px;
+    --border-radius-xl:20px;
+    --border-radius-2xl:24px;
+    --border-radius-3xl:28px;
+}
+
+html{
+    background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+main
+,section{
+    width: 100%;
+    height: 100%;
+
+}
+
+.btn {
+    padding:var(--space-sm) var(--space-md);
+    border:none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+section{
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--space-lg);
+}
+
+section .infos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.info{
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.board{
+    border: 1px solid var(--border-primary-color);
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(50px,1fr));
+    grid-template-rows: repeat(auto-fill,minmax(50px,1fr));
+    touch-action: none; /* stop the page from scrolling/zooming while swiping on the board */
+}
+
+.block{
+    /* width: 30px;
+    height: 30px; */
+    border: 1px solid var(--border-primary-color);
+    border-radius: 50%;
+}
+
+.fill{
+    background-color: var(--bg-fill-color);
+}
+
+.snake-head{
+    background-color: var(--bg-snake-head-color);
+}
+
+.snake-body{
+    background-color: var(--bg-snake-body-color);
+}
+
+.food{
+    background-color: var(--bg-food-color);
+}
+
+.modal{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: #35353587;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-md);
+}
+
+.modal .start-game, 
+.modal .game-over{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    gap:var(--space-lg);
+    text-align: center;
+}
+
+.modal .game-over{
+    display: none;
+}
+
+/* ---- on-screen touch controls (shown only on touch devices) ---- */
+
+.touch-controls{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+}
+
+.touch-controls-row{
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.btn-dir{
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-md);
+    background-color: #1a1a1a;
+    color: var(--text-primary-color);
+    font-size: 1.25rem;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.btn-dir:active{
+    transform: scale(0.92);
+    background-color: #262626;
+}
+
+@media (hover: none) and (pointer: coarse){
+    .touch-controls{
+        display: flex;
+    }
+}
+
+/* ---- small screen tweaks ---- */
+
+@media (max-width: 600px){
+    section{
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+
+    .info{
+        padding: var(--space-xss) var(--space-sm);
+    }
+
+    .info h3{
+        font-size: 0.85rem;
+    }
+
+    .btn-dir{
+        width: 48px;
+        height: 48px;
+        font-size: 1rem;
+    }
+}
